@@ -65,8 +65,15 @@ class _SplashPageState extends State<SplashPage> {
                         Constants.appName,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 24.0,
-                          fontWeight: FontWeight.bold
+                          fontSize: 32.0,
+                          fontWeight: FontWeight.bold,
+                          shadows: <Shadow>[
+                            Shadow(
+                              offset: Offset(1.0, 2.0),
+                              blurRadius: 3.0,
+                              color: Color.fromARGB(154, 154, 154, 3),
+                            ),
+                          ],
                         ),
                       ),
                     ],
@@ -89,9 +96,16 @@ class _SplashPageState extends State<SplashPage> {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18.0,
-                        fontWeight: FontWeight.bold
+                        fontWeight: FontWeight.bold,
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(1.0, 2.0),
+                            blurRadius: 4.0,
+                            color: Color.fromARGB(124, 124, 124, 3),
+                          ),
+                        ],
                       ),
-                      textAlign: TextAlign.center
+                      textAlign: TextAlign.center,
                     ),
                   ],
                 ),
