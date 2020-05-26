@@ -24,4 +24,6 @@ class ApiResponse {
     'valor': valor,
   };
 
+  bool operator ==(o) => o is ApiResponse && o.codigo == codigo && o.mensaje == mensaje && o.valor == valor;
+
 }

@@ -24,7 +24,7 @@ class SaludoApiService {
     if(res.statusCode == 200){
       response.valor = Saludo.fromJson(json.decode(json.encode(response.valor)));
     } else {
-      print("Error!!!!");
+      print("Error!!!!, ${response.mensaje}");
       response.valor = null;
     }
     return response;

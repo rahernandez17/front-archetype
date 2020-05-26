@@ -18,6 +18,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  test_api: ^0.2.11
+  mockito: ^4.1.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -39,13 +41,13 @@ flutter:
   fonts:
     - family: Roboto
       fonts:
-        - asset: fonts/Roboto/Roboto-Light.ttf
-        - asset: fonts/Roboto/Roboto-Regular.ttf
+        - asset: lib/src/resource/fonts/Roboto/Roboto-Light.ttf
+        - asset: lib/src/resource/fonts/Roboto/Roboto-Regular.ttf
           style: normal
     - family: Raleway
       fonts:
-        - asset: fonts/Raleway/Raleway-Light.ttf
-        - asset: fonts/Raleway/Raleway-Regular.ttf
+        - asset: lib/src/resource/fonts/Raleway/Raleway-Light.ttf
+        - asset: lib/src/resource/fonts/Raleway/Raleway-Regular.ttf
           weight: 400
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
