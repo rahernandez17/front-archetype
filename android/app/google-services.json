@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "986593173400",
+    "firebase_url": "https://certificados-uniajc.firebaseio.com",
+    "project_id": "certificados-uniajc",
+    "storage_bucket": "certificados-uniajc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986593173400:android:b575e8e6a349cc96d5d5ed",
+        "android_client_info": {
+          "package_name": "com.example.front_archetype"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986593173400-uap40oblj9q4mo9rtncnffq1m4jsbh39.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.front_archetype",
+            "certificate_hash": "ea2edb06ebe801fa210a00a2bf9084a9025ecc61"
+          }
+        },
+        {
+          "client_id": "986593173400-ema77t7325346f5828hnthchi3fmeq2m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr0WA_5yQQsAmIYGD0ZWuFw0ahq7kxBmI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "986593173400-ema77t7325346f5828hnthchi3fmeq2m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
