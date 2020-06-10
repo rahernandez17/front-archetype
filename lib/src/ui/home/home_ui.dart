@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:front_archetype/src/bloc/saludo_bloc.dart';
-import 'package:front_archetype/src/models/saludo.dart';
+import 'package:front_archetype/src/bloc/certificate_bloc.dart';
+import 'package:front_archetype/src/utils/alert_util.dart';
 import 'package:front_archetype/src/utils/constants.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  final SaludoBloc saludoBloc = SaludoBloc();
+  final CertificateBloc certificateBloc = CertificateBloc();
 
   @override
   void initState() {
@@ -29,20 +29,33 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FutureBuilder<Saludo>(
-              future: saludoBloc.saludar("Raul"),
-              builder: (context, snapshot) {
-                if(snapshot.hasData) {
-                  return Text(snapshot.data.saludo);
-                } else if (snapshot.hasError){
-                  return Text("${snapshot.error}");
-                }
-                return CircularProgressIndicator();
+            FlatButton(
+              color: Colors.blue,
+              textColor: Colors.white,
+              disabledColor: Colors.grey,
+              disabledTextColor: Colors.black,
+              padding: EdgeInsets.all(8.0),
+              splashColor: Colors.blueAccent,
+              onPressed: () async {
+                var message = await certificateBloc.enviarCertificado();
+                AlertUtil.showDialogAlert(context, "Alerta!", message);
               },
-            ),
+              child: Text(
+                "Certificado a email",
+                style: TextStyle(fontSize: 20.0),
+              ),
+            )           
           ],
         ),
-      )
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          /* */
+        },
+        child: Icon(Icons.navigation),
+        backgroundColor: Colors.blue,
+      ),
     );
   }
+
 }
