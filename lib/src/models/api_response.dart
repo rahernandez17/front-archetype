@@ -12,8 +12,8 @@ class ApiResponse {
 
   factory ApiResponse.fromJson(Map<String, dynamic> json) {
     return ApiResponse(
-      codigo: json['codigo'],
-      mensaje: json['mensaje'],
+      codigo: json['codigo'] as int,
+      mensaje: json['mensaje'] as String,
       valor: json['valor']
     );
   }

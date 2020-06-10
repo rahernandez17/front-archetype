@@ -10,7 +10,7 @@ class SaludoBloc {
     var datos = SaludoNombre(nombre: nombre);
     final saludo = await _repository.saludar(datos);
     if(saludo != null && saludo.codigo == 200) {
-      return saludo.valor;
+      return saludo.valor as Saludo;
     } else {
       return null;
     }

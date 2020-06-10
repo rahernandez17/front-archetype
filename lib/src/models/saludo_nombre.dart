@@ -6,7 +6,7 @@ class SaludoNombre {
 
   factory SaludoNombre.fromJson(Map<String, dynamic> json){
     return SaludoNombre(
-      nombre: json['nombre']
+      nombre: json['nombre'] as String
     );
   }
 

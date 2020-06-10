@@ -20,9 +20,9 @@ class SaludoApiService {
       },
       body: json.encode(data)
     );
-    var response = ApiResponse.fromJson(json.decode(res.body));
+    var response = ApiResponse.fromJson(json.decode(res.body) as Map<String, dynamic>);
     if(res.statusCode == 200){
-      response.valor = Saludo.fromJson(json.decode(json.encode(response.valor)));
+      response.valor = Saludo.fromJson(json.decode(json.encode(response.valor)) as Map<String, dynamic>);
     } else {
       print("Error!!!!, ${response.mensaje}");
       response.valor = null;

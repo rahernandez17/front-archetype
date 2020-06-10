@@ -5,11 +5,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 
 class PushNotificationProvider {
 
-  /**
-   * 
-   * Voy en el vídeo 5 del tutorial
-   * https://www.youtube.com/watch?v=pswT-gzRf_o&list=PLCKuOXG0bPi375T5P1UAK1QjYaF6jUKBP&index=7
-   */
+  /// Voy en el vídeo 5 del tutorial
+  /// https://www.youtube.com/watch?v=pswT-gzRf_o&list=PLCKuOXG0bPi375T5P1UAK1QjYaF6jUKBP&index=7
+
 
   FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
@@ -33,7 +31,7 @@ class PushNotificationProvider {
         if (Platform.isAndroid) {
           //nombre es el parametro que se manda en la notificación
           //Se puede editar
-          argumento = info['data']['nombre'] ?? 'no-data';
+          argumento = (info['data']['nombre'] ?? 'no-data') as String;
         }
         _messagesStreamController.sink.add(argumento);
         return;
