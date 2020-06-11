@@ -5,9 +5,9 @@ class ApiResponse {
   dynamic value;
 
   ApiResponse({ 
-    code,
-    message,
-    value
+    this.code,
+    this.message,
+    this.value
   });
 
   factory ApiResponse.fromJson(Map<String, dynamic> json) {

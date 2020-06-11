@@ -1,4 +1,6 @@
-import 'package:front_archetype/src/exceptions/custom_exception.dart';
+
+import 'package:front_archetype/src/exceptions/response_error_exception.dart';
+import 'package:front_archetype/src/exceptions/without_connection_exception.dart';
 import 'package:front_archetype/src/models/request/certificate_mail.dart';
 import 'package:front_archetype/src/models/response/api_response.dart';
 import 'package:front_archetype/src/repository/certificates_repository.dart';
@@ -18,7 +20,11 @@ class CertificateBloc {
     try {
       operation = await _repository.sendCertificateToMail(datos);
     } catch (e) {
-      operation.message = (e as CustomException).message;
+      if (e is WithoutConnectionException) {
+        operation.message = e.message;
+      } else if (e is ResponseErrorException) {
+        operation.message = e.message;
+      }
     }
     return operation.message;
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front_archetype/src/bloc/certificate_bloc.dart';
+import 'package:front_archetype/src/bloc/request_bloc.dart';
 import 'package:front_archetype/src/utils/alert_util.dart';
 import 'package:front_archetype/src/utils/constants.dart';
 
@@ -13,6 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   final CertificateBloc certificateBloc = CertificateBloc();
+  final RequestBloc requestBloc = RequestBloc();
 
   @override
   void initState() {
@@ -24,18 +26,19 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(Constants.homeName),
+        backgroundColor: Constants.bluePrimary,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             FlatButton(
-              color: Colors.blue,
+              color: Constants.bluePrimary,
               textColor: Colors.white,
               disabledColor: Colors.grey,
               disabledTextColor: Colors.black,
               padding: EdgeInsets.all(8.0),
-              splashColor: Colors.blueAccent,
+              splashColor: Constants.blueSecondary,
               onPressed: () async {
                 var message = await certificateBloc.enviarCertificado();
                 AlertUtil.showDialogAlert(context, "Alerta!", message);
@@ -49,11 +52,13 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          /* */
+        onPressed: () async {
+          var message = await requestBloc.enviarSolicitudEmail();
+          AlertUtil.showDialogAlert(context, "Alerta!", message);
         },
         child: Icon(Icons.navigation),
-        backgroundColor: Colors.blue,
+        backgroundColor: Constants.bluePrimary,
+        splashColor: Constants.blueSecondary,
       ),
     );
   }

@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:front_archetype/src/exceptions/custom_exception.dart';
+import 'package:front_archetype/src/exceptions/response_error_exception.dart';
+import 'package:front_archetype/src/exceptions/without_connection_exception.dart';
 import 'package:front_archetype/src/models/request/certificate_mail.dart';
 import 'package:front_archetype/src/models/response/api_response.dart';
 import 'package:front_archetype/src/utils/constants.dart';
@@ -11,30 +12,29 @@ class CertificateApiService {
 
   CertificateApiService();
 
-  //http://localhost:8070/api/certificados/
   //Este método se remueve porque es automático
   //Sólo es para efectos de prueba y demostración
   Future<ApiResponse> sendCertificateToMail(CertificateMail request) async {
     var response = ApiResponse(code: 0, message: "", value: "");
-    Uri url = Uri.http(Constants.urlBase, Constants.urlCertificateService + Constants.urlurlCertificateSendMail);
+    Uri url = Uri.http(Constants.urlBase, Constants.urlCertificateService + Constants.urlCertificateSendMail);
+    http.Response res = null;
     try {
-      var res = await http.post(
+      res = await http.post(
         url,
         headers: {
           HttpHeaders.contentTypeHeader: "application/json",
           HttpHeaders.authorizationHeader: Constants.token
         },
         body: json.encode(request)
-      );      
-      if(res.statusCode == 200) {
-        response = ApiResponse.fromJson(json.decode(res.body) as Map<String, dynamic>);
-        response.value = response.value as String;
-      } else {
-        response.message = "No se pudo obtener";
-        response.value = null;
-      }
-    } on SocketException {
-      throw CustomException("La conexión al servicio no se pudo realizar");
+      );
+    } catch (e) {
+      throw WithoutConnectionException(Constants.withoutConnectionMsg);
+    }
+    response = ApiResponse.fromJson(json.decode(res.body) as Map<String, dynamic>);
+    if(res.statusCode == 200) {
+      response.value = response.value as String;
+    } else {
+      throw ResponseErrorException(response.message);
     }
     return response;
   }

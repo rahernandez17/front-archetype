@@ -6,10 +6,10 @@ class CertificateMail {
   String typeCertificate;
 
   CertificateMail({
-    filesPath,
-    link,
-    to,
-    typeCertificate
+    this.filesPath,
+    this.link,
+    this.to,
+    this.typeCertificate
   });
 
   factory CertificateMail.fromJson(Map<String, dynamic> json) {

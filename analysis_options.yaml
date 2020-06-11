@@ -8,6 +8,7 @@ analyzer:
     - test/**
   strong-mode:
     implicit-casts: false
+    implicit-dynamic: true
   errors:
     invalid_assignment: warning
     missing_return: error
@@ -23,7 +24,7 @@ analyzer:
 linter:
   rules:
     - avoid_empty_else
-    - avoid_init_to_null
+    #- avoid_init_to_null
     - avoid_relative_lib_imports
     - avoid_return_types_on_setters
     - avoid_shadowing_type_parameters
